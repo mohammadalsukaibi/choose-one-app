@@ -1,0 +1,3 @@
+export const LOAD_USERS = "LOAD_USERS";
+export const LOAD_QUESTIONS = "LOAD_QUESTIONS";
+export const SET_ACTIVE_USER = "SET_ACTIVE_USER";
