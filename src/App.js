@@ -1,15 +1,26 @@
-import { loadUsers, loadQuestions } from "./actions";
+import { getInitialData } from "./actions";
 import { useEffect } from "react";
-import { getAllUsers, getAllQuestions } from "./DATA";
 import { useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+
+import Users from "./components/Users";
+import Home from "./components/Home";
+import AddQuestion from "./components/AddQuestion";
+import Leaderboard from "./components/Leaderboard";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    getAllUsers().then((users) => dispatch(loadUsers(users)));
-    getAllQuestions().then((questions) => dispatch(loadQuestions(questions)));
+    dispatch(getInitialData(dispatch));
   }, []);
-  return <div className="App">hi</div>;
+  return (
+    <Routes>
+      <Route exact path="/" element={<Users />} />
+      <Route exact path="/home" element={<Home />} />
+      <Route exact path="/addQuestion" element={<AddQuestion />} />
+      <Route exact path="/Leaderboard" element={<Leaderboard />} />
+    </Routes>
+  );
 }
 
 export default App;
