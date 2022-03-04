@@ -15,7 +15,6 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-
 function Navbar() {
   const activeUser = useSelector((state) => state.activeUser);
   const navigate = useNavigate();
@@ -50,7 +49,7 @@ function Navbar() {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            CHOOSE ONE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -80,13 +79,25 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={() => { navigate('/home') }}>
+              <MenuItem
+                onClick={() => {
+                  navigate("/home");
+                }}
+              >
                 <Typography textAlign="center">Home</Typography>
               </MenuItem>
-              <MenuItem onClick={() => { navigate('/addQuestion') }}>
+              <MenuItem
+                onClick={() => {
+                  navigate("/addQuestion");
+                }}
+              >
                 <Typography textAlign="center">New Question</Typography>
               </MenuItem>
-              <MenuItem onClick={() => { navigate('/Leaderboard') }}>
+              <MenuItem
+                onClick={() => {
+                  navigate("/Leaderboard");
+                }}
+              >
                 <Typography textAlign="center">LeaderBoard</Typography>
               </MenuItem>
             </Menu>
@@ -100,24 +111,36 @@ function Navbar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <Button
-                onClick={() => { navigate('/home') }}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Home
-              </Button>
-              <Button
-                onClick={() => { navigate('/addQuestion') }}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                New Question
-              </Button>
-              <Button
-                onClick={() => { navigate('/Leaderboard') }}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                LeaderBoard
-              </Button>
+            {activeUser.length === 0 ? (
+              ""
+            ) : (
+              <>
+                <Button
+                  onClick={() => {
+                    navigate("/home");
+                  }}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  Home
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/addQuestion");
+                  }}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  New Question
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/Leaderboard");
+                  }}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  LeaderBoard
+                </Button>
+              </>
+            )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

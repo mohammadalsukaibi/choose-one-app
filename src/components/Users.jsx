@@ -8,6 +8,13 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Navbar from "./Navbar";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
 
 function Users() {
   const navigate = useNavigate();
@@ -31,31 +38,52 @@ function Users() {
   };
 
   return (
-    <div className="users-container">
-      <Box sx={{ minWidth: 120 }}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">choose a user</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={user}
-            label="User"
-            onChange={handleChange}
-          >
-            {users === undefined
-              ? console.log("no users yet")
-              : Object.entries(users).map((user) => (
-                  <MenuItem key={user[1].id} value={user[0]}>
-                    {user[1].fullname}
-                  </MenuItem>
-                ))}
-          </Select>
-        </FormControl>
-        <Button variant="contained" size="medium" onClick={handleSubmit}>
-          continue
-        </Button>
-      </Box>
-    </div>
+    <>
+      <Navbar />
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        style={{
+          minHeight: "100vh",
+          marginTop: "100px",
+        }}
+      >
+        <Grid item xs={3}>
+          <Typography variant="h4" gutterBottom>
+            WELCOME TO CHOOSE ONE APP
+          </Typography>
+          <Card sx={{ minWidth: 275 }}>
+            <CardContent>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  choose a user
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={user}
+                  label="User"
+                  onChange={handleChange}
+                >
+                  {users === undefined
+                    ? console.log("no users yet")
+                    : Object.entries(users).map((user) => (
+                        <MenuItem key={user[1].id} value={user[0]}>
+                          {user[1].fullname}
+                        </MenuItem>
+                      ))}
+                </Select>
+              </FormControl>
+              <Button variant="contained" size="medium" onClick={handleSubmit} style={{marginTop: "10px"}}>
+                continue
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </>
   );
 }
 

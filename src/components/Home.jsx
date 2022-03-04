@@ -39,7 +39,6 @@ function Home() {
           alignItems="center"
           style={{
             minHeight: "100vh",
-            backgroundColor: "whitesmoke",
             Width: "100%",
           }}
         >
