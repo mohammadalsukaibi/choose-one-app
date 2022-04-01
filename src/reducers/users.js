@@ -11,6 +11,7 @@ export default function users(state = [], action) {
         questions: state[action.question.creator].questions.concat([action.question.id])
       }
     };
+
   } else if (action.type === ADD_QUESTION_ANSWER) {
     const { questionId, answer, authedUser } = action;
     return {

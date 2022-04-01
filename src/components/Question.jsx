@@ -32,13 +32,9 @@ function Question({ question, activeUser }) {
         authedUser: activeUser,
         questionId: question[1].id
     }
+    console.log(ans)
     dispatch(setQuestionAnswer(ans))
-    // addAnswerToQuestion(ans).then(res => {
-    //     // change it in the store
-    //     console.log(res)
-    //     console.log("added")
-    //     console.log(question)
-    // })
+
   };
 
   
